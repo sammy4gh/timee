@@ -4,11 +4,11 @@ import ToggleButton from "./toggleButton";
 import {useDispatch} from "react-redux";
 import {bindActionCreators} from "redux";
 import { Popover } from '@headlessui/react'
-import {itemActions} from '../../state'
+import {itemsActions} from '../../state'
 const ItemForm = (props) => {
     const [toggle, setToggle] = useState(false)
     const dispatch = useDispatch()
-    const {ADD_ITEM} = bindActionCreators(itemActions, dispatch)
+    const {ADD_ITEM} = bindActionCreators(itemsActions, dispatch)
     const {register, handleSubmit, formState:{errors}} = useForm()
     const onSubmit = data => {
         console.log(data);
