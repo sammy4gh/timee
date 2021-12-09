@@ -1,4 +1,5 @@
-import {addDoc, collection, getDocs, onSnapshot, query, serverTimestamp} from 'firebase/firestore'
+
+import {addDoc, collection, getDocs, orderBy, limit, onSnapshot, query, serverTimestamp} from 'firebase/firestore'
 import {db} from "../../config/firebaseConfig";
 
 export const  ADD_ITEM = (payload) => {
@@ -21,23 +22,42 @@ export const  ADD_ITEM = (payload) => {
 }
 
 export const GET_ITEMS =()=>{
-    return async (dispatch, geState)=>{
+    return async (dispatch, getState)=>{
         const dbItems = [];
-        const q = query(collection(db,'items'))
+        const itemsRef = collection(db,'items')
+        const q = query(itemsRef, orderBy('createdAt', 'desc'))
+
+        try {
+            const unsubscribe = onSnapshot(q,  async (querySnapshot)=>{
+                await console.log('snapshot', querySnapshot.docs.length)
+                await   querySnapshot.forEach( (  doc)=>{
+                    if ( querySnapshot.docs.length !== dbItems.length){
+                        if (!dbItems.includes(doc.data().createdAt)){
+                            dbItems.push(  doc.data())
+                        }else (
+                            console.log('item include',doc.data())
+                        )
+                    }
+
+                })
 
 
-        const unsubscribe = onSnapshot(q,  async (querySnapshot)=>{
-            await   querySnapshot.forEach( (  doc)=>{
-                dbItems.push(  doc.data())
+                if ( await querySnapshot.docs.length === dbItems.length ){
+                    await dispatch({
+                        type: 'GET_ITEMS',
+                        payload : dbItems
+                    })
+                }
+                await console.log('dbItems', dbItems)
+                await  console.log('getState', getState())
             })
-            await dispatch({
-                type: 'GET_ITEMS',
-                payload : dbItems
-            })
-        })
+
+        }catch (e) {
+            console.log('There is an error reading data', e)
+        }
 
 
-        console.log('action item',dbItems);
+
 
     }
 }
