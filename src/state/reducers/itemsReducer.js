@@ -17,6 +17,12 @@ const itemsReducer = (state = [], action) => {
         case 'GET_ITEMS':
             console.log('reducer payload',action.payload)
             return action.payload
+        case 'DELETE_ITEM':
+            console.log('item deleted ==> ', action.payload)
+            const deleteItem = (item)=>{
+                return item.id !== action.payload
+            }
+            return state.filter(deleteItem)
         default:
             return state;
     }

@@ -20,7 +20,7 @@ const Items = (props) => {
             {  (items.length < 1 || items === undefined ?
                 <h3 className={'font-semibold text-center'}>Loading...</h3>  :
                 items.map((item, i)=>{
-                    return <Item key={i} details={item.details} title={item.title}/>
+                    return <Item key={item.id} itemID={item.id} details={item.details} title={item.title}/>
                 }))
             }
         </div>

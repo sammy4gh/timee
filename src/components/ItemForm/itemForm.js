@@ -20,9 +20,9 @@ const ItemForm = (props) => {
 
 
     return (
-        <div className={'sticky top-10 bg-white p-4 m-4 w-full md:w-2/3 lg:w-1/3 flex flex-col justify-center '}>
+        <div className={`sticky top-10 bg-white p-4 m-4 w-full  ${toggle && 'shadow-lg' }  rounded-lg md:w-2/3 lg:w-1/3 flex flex-col justify-center `}>
                 <form onSubmit={handleSubmit((data)=> onSubmit(data))}>
-                    <div className={' flex items-center justify-end'}>
+                    <div className={' flex items-center justify-end '}>
                         <ToggleButton toggle={toggle} setToggle={setToggle}/>
                     </div>
                     {
@@ -36,7 +36,7 @@ const ItemForm = (props) => {
                                 <textarea  className={'w-full rounded-md '} name="" id=""  {...register('details')}/>
                             </div>
                             <div className={'flex items-center justify-end'}>
-                                <button type={"submit"} className={' p-2 m-2 text-white bg-black font-semibold'}>Add item</button>
+                                <button type={"submit"} className={' p-2 m-2 text-white bg-black font-semibold rounded-full'}>Add item</button>
                             </div>
                         </div>
                     }

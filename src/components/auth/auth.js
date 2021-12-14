@@ -7,7 +7,7 @@ import AuthProviderButton from "./authProviderButton";
 import {useDispatch, useSelector} from "react-redux";
 import {bindActionCreators} from "redux";
 import {authActions} from "../../state";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, Navigate} from "react-router-dom";
 
 
 
@@ -25,12 +25,10 @@ const Auth = (props) => {
 
 
     useEffect(() => {
-        return () => {
-            if (auth){
-                navigate(from, {replace: true})
-            }
-        };
-    }, []);
+        if (auth){
+            navigate(from, {replace:true})
+        }
+    }, [auth]);
 
 
 
@@ -38,7 +36,7 @@ const Auth = (props) => {
     return (
         <div className="w-full h-screen flex items-center justify-center">
             <div className="bg-gray-200 w-96 h-auto rounded-lg pt-8 pb-8 px-8 flex flex-col items-center justi">
-                <label className="font-light text-4xl mb-4">rai<span className="font-bold">raksa</span></label>
+                <label className="font-light text-4xl mb-4">Ti<span className="font-bold">mee</span></label>
                 <input type="text" className="w-full h-12 rounded-lg px-4 text-lg focus:ring-blue-600 mb-4"
                        placeholder="Email"/>
                 <input type="password" className="w-full h-12 rounded-lg px-4 text-lg focus:ring-blue-600 mb-4"
