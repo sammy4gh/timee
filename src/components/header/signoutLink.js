@@ -1,10 +1,8 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
 import PropTypes from "prop-types";
 import {useDispatch} from "react-redux";
 import {bindActionCreators} from "redux";
 import {authActions} from "../../state";
-
 
 
 const SignoutLink = ({active, linkName, navPath, }) => {

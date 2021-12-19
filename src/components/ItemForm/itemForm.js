@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {useFieldArray, useForm} from "react-hook-form";
+import React, {useState} from 'react';
+import {useForm} from "react-hook-form";
 import ToggleButton from "./toggleButton";
 import {useDispatch, useSelector} from "react-redux";
 import {bindActionCreators} from "redux";
-import { Popover } from '@headlessui/react'
-import {formActions,itemsActions} from '../../state'
+import {formActions, itemsActions} from '../../state'
 import {GET_ITEMS} from "../../state/actionCreators/itemsActions";
+
 const ItemForm = (props) => {
     const [toggle, setToggle] = useState(false)
     const items = useSelector(state => state.items)

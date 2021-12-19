@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import ItemForm from "../ItemForm/itemForm";
 import Items from "../Items/Items";
 import {collection, query} from "firebase/firestore";
-import {useLocation, useNavigate ,Navigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {db} from "../../config/firebaseConfig";
 

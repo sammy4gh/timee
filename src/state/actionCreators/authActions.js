@@ -1,6 +1,5 @@
-import {signInWithPopup, onAuthStateChanged, signOut} from "firebase/auth";
+import {onAuthStateChanged, signInWithPopup, signOut} from "firebase/auth";
 import {auth} from "../../config/firebaseConfig";
-import {error} from "autoprefixer/lib/utils";
 
 
 export const  AUTH_WITH_PROVIDER = (provider) => {

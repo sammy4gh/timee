@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {PlusIcon, XIcon} from "@heroicons/react/solid";
 
 const ToggleButton = ({toggle,  setToggle}) => {

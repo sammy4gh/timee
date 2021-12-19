@@ -1,7 +1,5 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import {GoogleAuthProvider, signInWithPopup} from "firebase/auth";
-import {auth} from "../../config/firebaseConfig";
 import {useDispatch} from "react-redux";
 import {bindActionCreators} from "redux";
 import {authActions} from "../../state";

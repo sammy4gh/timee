@@ -1,8 +1,6 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect} from 'react';
 import Item from "../Item/item";
 import {useDispatch, useSelector} from "react-redux";
-import {getDocs, collection, query, onSnapshot}from 'firebase/firestore'
-import {db} from "../../config/firebaseConfig";
 import {bindActionCreators} from "redux";
 import {formActions, itemsActions} from "../../state";
 

@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {PencilIcon} from "@heroicons/react/solid";
 import {useDispatch} from "react-redux";
 import {bindActionCreators} from "redux";
-import {itemsActions, formActions} from '../../state'
+import {formActions, itemsActions} from '../../state'
 
 ActionButton.propTypes = {
     icon : PropTypes.any.isRequired,

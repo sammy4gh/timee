@@ -1,13 +1,9 @@
 import React, {Fragment} from 'react';
 import SignoutLink from "./signoutLink";
-import ProfileImage from "./profileImage";
-import { Menu, Transition } from '@headlessui/react'
-import Notification from "../Notification/Notification";
+import {Menu, Transition} from '@headlessui/react'
 import {MenuIcon} from "@heroicons/react/solid";
-import {useDispatch, useSelector} from "react-redux";
-import {bindActionCreators} from "redux";
+import {useSelector} from "react-redux";
 import User from "./user";
-
 
 
 const Nav = (props) => {

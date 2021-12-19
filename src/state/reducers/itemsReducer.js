@@ -1,6 +1,3 @@
-import {collection, getDocs} from "firebase/firestore";
-import {db} from "../../config/firebaseConfig";
-
 let items = [
     {
         id : '1' ,
