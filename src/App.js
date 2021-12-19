@@ -23,7 +23,7 @@ function App() {
 
     return (
     <div className="App absolute font-sans h-screen w-screen scrollbar-hide overflow-x-hidden  mx-auto  ">
-        {auth && <Header/>}
+        { auth && <Header/>}
         <div className={' mx-10 lg:mx-20  '}>
             <Routes>
                 <Route path={'/'} element={<Dashboard/>}/>

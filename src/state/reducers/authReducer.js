@@ -6,6 +6,9 @@ const authReducer = (state=null, action)=>{
         case 'ON_AUTH_STATE_CHANGE':
             console.log('auth state', action.payload)
             return action.payload
+        case 'SIGN_OUT':
+            console.log(action.payload);
+            return state
         default:
             return state
     }

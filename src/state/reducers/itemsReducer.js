@@ -11,9 +11,6 @@ let items = [
 
 const itemsReducer = (state = [], action) => {
     switch (action.type) {
-        case 'ADD_ITEM':
-           console.log(action.payload)
-            return state
         case 'GET_ITEMS':
             console.log('reducer payload',action.payload)
             return action.payload

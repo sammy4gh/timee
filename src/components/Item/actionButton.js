@@ -3,24 +3,33 @@ import PropTypes from 'prop-types';
 import {PencilIcon} from "@heroicons/react/solid";
 import {useDispatch} from "react-redux";
 import {bindActionCreators} from "redux";
-import {itemsActions} from '../../state'
+import {itemsActions, formActions} from '../../state'
 
 ActionButton.propTypes = {
     icon : PropTypes.any.isRequired,
-    itemID : PropTypes.string
+    itemID : PropTypes.string,
+    onCLick : PropTypes.func
 };
 
 
 
-function ActionButton({icon, itemID}) {
+function ActionButton({icon, itemID, item, onCLick}) {
     const dispatch = useDispatch()
     const {DELETE_ITEM, GET_ITEMS} = bindActionCreators(itemsActions, dispatch)
+    const {INPUTS} = bindActionCreators(formActions, dispatch)
 
-    const onCLick = (itemID)=>{
+    const onDelete = (itemID)=>{
         DELETE_ITEM(itemID)
     }
+
+    const onEdit = (item)=>{
+        console.log('onEdit',item)
+        INPUTS(item)
+    }
     return (
-        <button onClick={()=>onCLick(itemID)} className={'bg-gray-200 p-2 m-2 rounded-full'}>
+        <button onClick={()=> {
+            return onCLick()
+        } } className={'bg-gray-200 p-2 m-2 rounded-full'}>
             {icon}
         </button>
     );

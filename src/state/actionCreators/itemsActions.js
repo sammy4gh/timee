@@ -2,24 +2,6 @@
 import {addDoc, collection, getDocs, orderBy, limit, onSnapshot, query, serverTimestamp, doc, deleteDoc} from 'firebase/firestore'
 import {db} from "../../config/firebaseConfig";
 
-export const  ADD_ITEM = (payload) => {
-    return  async (dispatch, getState) => {
-        try {
-            const docRef = await addDoc(collection(db, 'items'),{
-                ...payload,
-                createdAt : serverTimestamp()
-            }).then(
-                dispatch({
-                    type: 'ADD_ITEM',
-                    payload : 'Item added succesfully'
-                })
-            )
-        }catch (e) {
-            console.error("Error adding document: ", e);
-        }
-
-    }
-}
 
 export const GET_ITEMS =()=>{
     return async (dispatch, getState)=>{
@@ -55,17 +37,13 @@ export const GET_ITEMS =()=>{
         }
 
 
-
-
     }
 }
 
 export const DELETE_ITEM = (itemID) => {
   return async (dispatch, getState)=>{
 
-      console.log('delete id para : ',itemID);
-
-
+      console.log('delete id para : ', itemID);
 
       const itemRef =  await doc(db, 'items', itemID)
         console.log('itemRef : ', itemRef)
@@ -73,13 +51,16 @@ export const DELETE_ITEM = (itemID) => {
           dispatch({
               type : 'DELETE_ITEM',
               payload : itemID
+          }, err=>{
+              console.log('There is error deleing item', err)
           })
 
-          console.log('getState', getState().items[0].id)
+          console.log('getState', getState().items.includes(itemID))
 
 
 
       })
   }
 }
+
 

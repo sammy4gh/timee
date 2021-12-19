@@ -1,4 +1,4 @@
-import {signInWithPopup, onAuthStateChanged} from "firebase/auth";
+import {signInWithPopup, onAuthStateChanged, signOut} from "firebase/auth";
 import {auth} from "../../config/firebaseConfig";
 import {error} from "autoprefixer/lib/utils";
 
@@ -7,7 +7,7 @@ export const  AUTH_WITH_PROVIDER = (provider) => {
     return  async (dispatch, getState) => {
 
         const authProvider = async (auth, provider)=>{
-            signInWithPopup(auth, provider).then((result)=>{
+           await signInWithPopup(auth, provider).then((result)=>{
                 const user = result.user
                 dispatch({
                     type : 'AUTH_WITH_PROVIDER',
@@ -29,12 +29,25 @@ export const  AUTH_WITH_PROVIDER = (provider) => {
 }
 export const ON_AUTH_STATE_CHANGE = ()=>{
     return async (dispatch, getState)=>{
-            onAuthStateChanged(auth, (user)=>{
+          await  onAuthStateChanged(auth, (user)=>{
                 user = auth.currentUser
                 dispatch({
                     type : 'ON_AUTH_STATE_CHANGE',
                     payload : user
                 })
             })
+    }
+}
+
+export const SING_OUT = ()=>{
+    return async (dispatch, getState)=>{
+        await signOut(auth).then(()=>{
+           dispatch({
+               type : 'SIGN_OUT',
+               payload : 'User sign out'
+           })
+        },error=>{
+            console.log('there is error', error)
+        })
     }
 }

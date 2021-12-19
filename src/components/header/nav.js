@@ -1,15 +1,32 @@
 import React, {Fragment} from 'react';
-import NavigationLink from "./navigationLink";
+import SignoutLink from "./signoutLink";
 import ProfileImage from "./profileImage";
 import { Menu, Transition } from '@headlessui/react'
 import Notification from "../Notification/Notification";
 import {MenuIcon} from "@heroicons/react/solid";
+import {useDispatch, useSelector} from "react-redux";
+import {bindActionCreators} from "redux";
+import User from "./user";
+
 
 
 const Nav = (props) => {
+
+    const auth = useSelector(state => state.auth)
+
+
     return (
             <div  className="text-left nav ">
-                <Menu as={'div'}>
+                <div className={'hidden lg:block fixed right-0 top-0 m-4 lg:block flex justify-between  items-center'}>
+                    {/*<Notification/>*/}
+                    {/*<User/>*/}
+                    <div className={'  lg:bg-black lg:rounded'}>
+                        <SignoutLink linkName={'Signout'}/>
+                    </div>
+
+
+                </div>
+                <Menu as={'div'} className={'lg:hidden'}>
                     <Menu.Button className={'fixed right-0 top-0 m-4'}>
                         <MenuIcon className={'text-black font-bold h-5 w-5'} />
                     </Menu.Button>
@@ -26,13 +43,13 @@ const Nav = (props) => {
                         {({active})=>(
                             <>
                                 <Menu.Item>
-                                    <ProfileImage />
+                                    <User/>
                                 </Menu.Item>
-                                <Menu.Item>
+                                {/*<Menu.Item>
                                     <Notification />
-                                </Menu.Item>
+                                </Menu.Item>*/}
                                 <Menu.Item>
-                                    <NavigationLink linkName={'SignUP'} active={active} />
+                                    <SignoutLink  linkName={auth && 'Signout'} active={active} />
                                 </Menu.Item>
                             </>
                         )}
