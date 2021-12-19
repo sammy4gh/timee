@@ -42,7 +42,7 @@ const Auth = (props) => {
                 </button>
                 <p className="text-right mb-4">Forgot password</p>
                 <label className="text-gray-800 mb-4">or</label>
-                <AuthProviderButton providerName={'GOOGLE'} provider={()=>{AUTH_WITH_PROVIDER(provider.google)}} bgColor={'bg-black'}/>
+                <AuthProviderButton providerName={'GITHUB'} bgColor={'bg-red-600  '}/>
                 <AuthProviderButton providerName={'FACEBOOK'} bgColor={'bg-blue'} />
                 <AuthProviderButton providerName={'GITHUB'} bgColor={'bg-gray-800  '}/>
             </div>

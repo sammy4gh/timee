@@ -28,7 +28,8 @@ AuthProviderButton.propTypes = {
 };
 
 AuthProviderButton.defaultProps={
-    provider : ()=>{}
+    provider : ()=>{},
+    bgColor : 'bg-red'
 }
 
 
