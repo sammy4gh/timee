@@ -28,7 +28,6 @@ const ItemForm = (props) => {
     const onUpdate = data =>{
         console.log('updating ', data.title)
         UPDATE_ITEM(data)
-
     }
 
 

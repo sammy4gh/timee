@@ -1,6 +1,6 @@
 import {collection, deleteDoc, doc, onSnapshot, orderBy, query} from 'firebase/firestore'
-import {db} from "../../config/firebaseConfig";
-
+import {auth, db} from "../../config/firebaseConfig";
+import {onAuthStateChanged} from "firebase/auth";
 
 export const GET_ITEMS =()=>{
     return async (dispatch, getState)=>{
@@ -11,14 +11,14 @@ export const GET_ITEMS =()=>{
         try {
             const unsubscribe = onSnapshot(q,  async (querySnapshot)=>{
                 await   querySnapshot.forEach( (  doc, i)=>{
-                    if ( querySnapshot.docs.length !== dbItems.length){
-                        if (!dbItems.includes(doc.data().createdAt)){
-                            /*dbItems.push(  doc.data())*/
-                            dbItems = [...dbItems , {...doc.data(), id : doc.id}]
-                        }else (
-                            console.log('item include',doc.data())
-                        )
-                    }
+                        if ( querySnapshot.docs.length !== dbItems.length){
+                            if (!dbItems.includes(doc.data().createdAt)){
+                                /*dbItems.push(  doc.data())*/
+                                dbItems = [...dbItems , {...doc.data(), id : doc.id}]
+                            }else (
+                                console.log('item include',doc.data())
+                            )
+                        }
 
                 })
 
